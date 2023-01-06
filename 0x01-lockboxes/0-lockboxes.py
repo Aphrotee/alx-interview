@@ -12,6 +12,10 @@ def checkBox(boxes, currentBox, register):
     """
     # analyses each key in a current box and it's corresponding box
     for key in currentBox:
+        if key >= len(boxes):
+            # if the current key has no box in the list of boxes
+            # the original register is returned untouched
+            return register
         # checks if the box corresponding to this
         # current key is locked or unlocked
         if not register[key]:
