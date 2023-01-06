@@ -14,8 +14,8 @@ def checkBox(boxes, currentBox, register):
     for key in currentBox:
         if key >= len(boxes):
             # if the current key has no box in the list of boxes
-            # the original register is returned untouched
-            return register
+            # the loop skips that key
+            continue
         # checks if the box corresponding to this
         # current key is locked or unlocked
         if not register[key]:
@@ -38,7 +38,7 @@ def canUnlockAll(boxes):
     register = [False for i in range(len(boxes))]
     # the first box is always open
     register[0] = True
-    if boxes[0] == []:
+    if len(boxes[0]) == 0:
         # if the first box has no keys, then no other box can be unlocked
         return False
     # updates the register with the state of the newly unlocked boxes
