@@ -5,7 +5,7 @@ This module provides the function minOpertions
 '''
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     '''
     This is a function that calculates the fewest number
     of operations needed to result in exactly n H characters in the file.
@@ -13,10 +13,10 @@ def minOperations(n: int) -> int:
     if n < 1 or type(n) != int:
         # Checks if the input is not a positive integer
         return 0
-    operations: int = 0 # number of operations counter
+    operations = 0 # number of operations counter
     while n >= 2:
         # number of H characters from all operations cannot be less than 2
-        lowestFactor: int = 2 # initialized at 2 which is 
+        lowestFactor = 2 # initialized at 2 which is 
         # the lowest possible factor asides 1
         while lowestFactor < n + 1:
             # loops to find the lowest factor of n
