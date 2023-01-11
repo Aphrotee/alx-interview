@@ -35,7 +35,7 @@ def canUnlockAll(boxes):
     """
     # Create a True/False register representing the Locked/Unlocked
     # state of each box
-    register = [False for i in range(len(boxes))]
+    register = [False for lowestFactor in range(len(boxes))]
     # the first box is always open
     register[0] = True
     if len(boxes[0]) == 0:
