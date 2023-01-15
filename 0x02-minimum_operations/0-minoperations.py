@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 
-'''
-This module provides the function minOpertions
-'''
+"""
+This module provides the function `minOpertions`
+"""
 
 
-def minOperations(n: int) -> int:
-    '''
+def minOperations(n):
+    """
     This is a function that calculates the fewest number
     of operations needed to result in exactly n H characters in the file.
-    '''
+    """
     if n < 1 or type(n) != int:
         # Checks if the input is not a positive integer
         return 0
