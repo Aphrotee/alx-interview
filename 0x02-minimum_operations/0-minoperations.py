@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-This module provides the algo function minOpertions
+This provides the algo function minOpertions
 """
 
 
