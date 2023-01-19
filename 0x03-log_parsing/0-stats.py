@@ -8,18 +8,7 @@ import re
 import sys
 import random
 
-responses = {
-   '200': 0,
-   '301': 0,
-   '400': 0,
-   '401': 0,
-   '403': 0,
-   '404': 0,
-   '405': 0,
-   '500': 0
-}
 
-statusCodes = ['200', '301', '400', '401', '403', '404', '405', '500']
 fileSize = 0
 i = 0
 
@@ -41,6 +30,17 @@ def run():
     try:
         i = 0
         fileSize = 0
+        responses = {
+            '200': 0,
+            '301': 0,
+            '400': 0,
+            '401': 0,
+            '403': 0,
+            '404': 0,
+            '405': 0,
+            '500': 0
+        }
+        statusCodes = ['200', '301', '400', '401', '403', '404', '405', '500']
         for line in sys.stdin:
             neededString = re.search(r'[2-5]0[0-5] \d+', line)
             if neededString is None:
