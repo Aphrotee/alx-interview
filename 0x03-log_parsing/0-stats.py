@@ -28,7 +28,7 @@ def print_log(fileSize, statusCodes, responses):
     """
     This function prints the log.
     """
-    print('File Size: {}'.format(fileSize))
+    print('File size: {}'.format(fileSize))
     for code in statusCodes:
         if responses[code] > 0:
             print('{}: {}'.format(code, responses[code]))
