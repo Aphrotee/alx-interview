@@ -49,7 +49,6 @@ def run():
             values = neededString.split(' ')
             status = values[0]
             size = values[1]
-            i = 0
             if status in statusCodes:
                 responses[status] += 1
             try:
