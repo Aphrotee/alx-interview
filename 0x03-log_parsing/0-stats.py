@@ -34,27 +34,34 @@ def print_log(fileSize, statusCodes, responses):
             print('{}: {}'.format(code, responses[code]))
 
 
-try:
-    for line in sys.stdin:
-        neededString = re.search(r'[2-5]0[0-5] \d+', line)
-        if neededString is None:
-            sys.exit(1)
-        neededString = neededString.group()
-        values = neededString.split(' ')
-        status = values[0]
-        size = values[1]
-        if status in statusCodes:
-            responses[status] += 1
-        try:
-            fileSize += int(size)
-        except Exception:
-            pass
-        if i == 9:
-            i = 0
-            print_log(fileSize, statusCodes, responses)
-            continue
-        i += 1
-except KeyboardInterrupt as e:
-    print_log(fileSize, statusCodes, responses)
-    print(e)
-    sys.exit(1)
+def run():
+    """
+    Log parser
+    """
+    try:
+        for line in sys.stdin:
+            neededString = re.search(r'[2-5]0[0-5] \d+', line)
+            if neededString is None:
+                return
+            neededString = neededString.group()
+            values = neededString.split(' ')
+            status = values[0]
+            size = values[1]
+            if status in statusCodes:
+                responses[status] += 1
+            try:
+                fileSize += int(size)
+            except Exception:
+                pass
+            if i == 9:
+                i = 0
+                print_log(fileSize, statusCodes, responses)
+                continue
+            i += 1
+    except KeyboardInterrupt as e:
+        print_log(fileSize, statusCodes, responses)
+        print(e)
+        return
+
+if __name__ == '__main__':
+    run()
