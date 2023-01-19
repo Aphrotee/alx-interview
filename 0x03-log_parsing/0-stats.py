@@ -37,6 +37,8 @@ def print_log(fileSize, statusCodes, responses):
 try:
     for line in sys.stdin:
         neededString = re.search(r'[2-5]0[0-5] \d+', line)
+        if neededString is None:
+            sys.exit(1)
         neededString = neededString.group()
         values = neededString.split(' ')
         status = values[0]
