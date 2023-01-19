@@ -52,6 +52,7 @@ try:
             print_log(fileSize, statusCodes, responses)
             continue
         i += 1
-except KeyboardInterrupt:
+except KeyboardInterrupt as e:
     print_log(fileSize, statusCodes, responses)
+    print(e)
     sys.exit(1)
