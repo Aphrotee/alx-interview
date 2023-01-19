@@ -43,12 +43,20 @@ def run():
         statusCodes = ['200', '301', '400', '401', '403', '404', '405', '500']
         for line in sys.stdin:
             neededString = re.search(r'[2-5]0[0-5] \d+', line)
-            if neededString is None:
+            ip = re.search(r'\d+.\d+.\d+.\d+', line)
+            if neededString is None or ip is None:
                 continue
             neededString = neededString.group()
             values = neededString.split(' ')
             status = values[0]
             size = values[1]
+            try:
+                # status = int(status)
+                size = int(size)
+                # status = str(status)
+                size = str(size)
+            except Exception:
+                continue
             if status in statusCodes:
                 responses[status] += 1
             try:
@@ -60,10 +68,12 @@ def run():
                 print_log(fileSize, statusCodes, responses)
                 continue
             i += 1
+        print_log(fileSize, statusCodes, responses)
     except KeyboardInterrupt as e:
         print_log(fileSize, statusCodes, responses)
         print(e)
         sys.exit(1)
+
 
 if __name__ == '__main__':
     run()
