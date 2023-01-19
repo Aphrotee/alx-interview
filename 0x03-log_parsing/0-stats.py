@@ -39,14 +39,17 @@ def run():
     Log parser
     """
     try:
+        i = 0
+        fileSize = 0
         for line in sys.stdin:
             neededString = re.search(r'[2-5]0[0-5] \d+', line)
             if neededString is None:
-                return
+                continue
             neededString = neededString.group()
             values = neededString.split(' ')
             status = values[0]
             size = values[1]
+            i = 0
             if status in statusCodes:
                 responses[status] += 1
             try:
@@ -61,7 +64,7 @@ def run():
     except KeyboardInterrupt as e:
         print_log(fileSize, statusCodes, responses)
         print(e)
-        return
+        sys.exit(1)
 
 if __name__ == '__main__':
     run()
