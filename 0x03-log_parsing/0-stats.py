@@ -43,8 +43,8 @@ def run():
         statusCodes = ['200', '301', '400', '401', '403', '404', '405', '500']
         for line in sys.stdin:
             neededString = re.search(r'[2-5]0[0-5] \d+', line)
-            ip = re.search(r'\d+.\d+.\d+.\d+', line)
-            if neededString is None or ip is None:
+            # ip = re.search(r'\d+.\d+.\d+.\d+', line)
+            if neededString is None:
                 continue
             neededString = neededString.group()
             values = neededString.split(' ')
