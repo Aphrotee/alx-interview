@@ -25,6 +25,8 @@ def validUTF8(data):
     """
     if data is None or len(data) == 0:
         return False
+    if type(data) != list:
+        return False
     if not isinstance(all(data), int):
         return False
     data = list(map(convertToBinary, data))
