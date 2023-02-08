@@ -23,7 +23,9 @@ if (process.argv.length >= 3) {
             });
             return P;
           });
-          Promise.all(characterNames).then((char) => { console.log(char.join('\n')); });
+          Promise.all(characterNames)
+          .then((char) => { console.log(char.join('\n')); })
+          .catch(e => console.log(e));
         }
       }
     );
