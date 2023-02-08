@@ -10,20 +10,20 @@ if (process.argv.length >= 3) {
       function (error, response, body) {
         if (error) { return console.log(error); }
         if (!error && response.statusCode === 200) {
-          const jsonObject = JSON.parse(body);
-          if (jsonObject !== undefined) {
-            for (let i = 0; i < jsonObject.characters.length; i++) {
-              request(jsonObject.characters[i],
-                function (err, res, bdy) {
-                  if (err) { return console.log(err); }
-                  if (!err && res.statusCode === 200) {
-                    const _jsonObject = JSON.parse(bdy);
-                    console.log(_jsonObject.name);
-                  }
+          const characters = JSON.parse(body).characters;
+          const characterNames = characters.map(function (character) {
+            const P = new Promise((resolve, reject) => {
+              request(character, (err, res, bdy) => {
+                if (!err) {
+                  resolve(JSON.parse(bdy).name);
+                } else {
+                  reject(err);
                 }
-              );
-            }
-          }
+              });
+            });
+            return P;
+          });
+          Promise.all(characterNames).then((char) => { console.log(char.join('\n')); });
         }
       }
     );
