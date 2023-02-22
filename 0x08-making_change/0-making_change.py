@@ -11,6 +11,10 @@ def makeChange(coins, total):
     """
     if coins is None or total is None:
         return -1
+    if not isinstance(total, int):
+        return 0
+    if total <= 0:
+        return 0
     if len(coins) <= 0:
         return 0
     count, totalCount = 0, 0
