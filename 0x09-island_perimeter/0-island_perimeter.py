@@ -16,6 +16,8 @@ def island_perimeter(grid: list):
     perimeter = 0
     rows = len(grid)
     columns = len(grid[0])
+    if all([all(row) for row in grid]):
+        return 2 * (rows + columns)
     onLand = False
     paths_to_follow = []
     paths_followed = []
