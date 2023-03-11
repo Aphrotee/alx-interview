@@ -1,4 +1,4 @@
-#!/usr//p
+#!/usr/python3
 
 """
 This module provides the function `isWinner`
